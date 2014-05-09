@@ -4,6 +4,7 @@ P1. Implement a function that will flatten two lists up to a maximum given depth
 """
 import itertools
 
+
 def flatten(list_a, list_b, max_depth):
     return list(itertools.chain(flatten_aux(list_a, max_depth),flatten_aux(list_b, max_depth)))
 

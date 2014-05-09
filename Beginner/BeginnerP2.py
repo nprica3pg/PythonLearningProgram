@@ -3,6 +3,7 @@ __author__ = 'natalia'
 P1. Merge 2 objects with any depth (including contained dictionaries, lists, sets, strings, integers, floats). Type mismatches should yield a tuple with the two elements.
 """
 
+
 def merge(obj_a, obj_b):
     result = type(obj_a)()
     if type(obj_a) != type(obj_b):
