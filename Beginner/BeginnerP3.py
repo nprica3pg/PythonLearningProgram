@@ -29,6 +29,7 @@ def write_output_file(filename, index_list):
         f.write('\t')
     f.close()
 
+
 def sort_dict_after_keys(dict_list):
     received_dict_index = range(1, len(dict_list) + 1)
     while True:
@@ -48,7 +49,7 @@ def sort_dict_after_keys(dict_list):
                 received_dict_index[i + 1] = aux_index
         if done:
             break
-    return (dict_list, received_dict_index)
+    return dict_list, received_dict_index
 
 
 def main_function(input_file, output_file):
