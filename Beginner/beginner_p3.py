@@ -5,29 +5,25 @@ P1. Merge 2 objects with any depth (including contained dictionaries, lists, set
 
 
 def read_input_file(filename):
-    f = open(filename, 'r')
-    my_list = []
+    with open(filename, 'r') as f:
+        my_list = []
 
-    for line in f:
-        if line != '\n':
-            index_of_whitespace = line.index(' ')
-            key = line[:index_of_whitespace]
-            value = line[index_of_whitespace:].strip()
-            my_dict = {key : int(value)}
-            my_list.append(my_dict)
+        for line in f:
+            if line != '\n':
+                index_of_whitespace = line.index(' ')
+                key = line[:index_of_whitespace]
+                value = line[index_of_whitespace:].strip()
+                my_dict = {key: int(value)}
+                my_list.append(my_dict)
 
-    f.close()
     return my_list
 
 
 def write_output_file(filename, index_list):
-    import os
-    os.remove(filename)
-    f = open(filename, 'a')
-    for item in index_list:
-        f.write(str(item))
-        f.write('\t')
-    f.close()
+    with open(filename, 'w') as f:
+        for item in index_list:
+            f.write(str(item))
+            f.write('\t')
 
 
 def sort_dict_after_keys(dict_list):
@@ -35,8 +31,8 @@ def sort_dict_after_keys(dict_list):
     while True:
         done = True
         for i in range(len(dict_list) - 1):
-            key_1 = dict_list[i].keys()[0]
-            key_2 = dict_list[i+1].keys()[0]
+            key_1 = dict_list[i].iterkeys().next()
+            key_2 = dict_list[i+1].iterkeys().next()
             if (key_1 > key_2) or (key_1 == key_2 and dict_list[i][key_1] > dict_list[i + 1][key_2]):
                 done = False
 

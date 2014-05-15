@@ -15,15 +15,15 @@ def merge(obj_a, obj_b):
     if type(obj_a) != type(obj_b):
         result = (obj_a, obj_b)
 
-    elif hasattr(obj_a, '__iter__') and hasattr(obj_b, '__iter__'):  # the object is iterable
+    elif hasattr(obj_a, '__iter__') and hasattr(obj_b, '__iter__'):
+    # check if the object is iterable; the way the check is performed, strings are not considered iterable
 
         if type(obj_a) == dict:
-            obj_a_keys = obj_a.keys()
-            if obj_a_keys != obj_b.keys():
-                result = (obj_a, obj_b)
-            else:
-                for k in obj_a_keys:
-                    result[k] = merge(obj_a[k], obj_b[k])
+            result = obj_b.copy()
+            result.update(obj_a)
+            for k, v in obj_b.iteritems():
+                if k in obj_a:
+                    result[k] = merge(result[k], v)
 
         elif type(obj_a) == list:
             obj_a.extend(obj_b)

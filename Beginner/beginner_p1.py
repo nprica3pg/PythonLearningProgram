@@ -38,3 +38,4 @@ if __name__ == "__main__":
     print flatten(list_1, list_2, 2)
     print flatten(list_1, list_2, 3)
     print flatten(list_1, list_2, 4)
+    print flatten(list_1, list_2, 0)
